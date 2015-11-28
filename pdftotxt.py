@@ -6,7 +6,6 @@ from PyQt4.QtGui import *
 # from PyQt4 import uic
 from ui_test import Ui_MainWindow
 
-s
 #( Ui_MainWindow, QMainWindow ) = uic.loadUiType( 'ui_test.ui' )
 
 class MainWindow(QMainWindow):
