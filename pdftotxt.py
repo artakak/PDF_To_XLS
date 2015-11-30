@@ -10,6 +10,8 @@ import re
 import xlwt
 import pickle
 import sys
+import shelve
+import os
 # import PyQt4 QtCore and QtGui modules
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -29,18 +31,31 @@ class MainWindow(QMainWindow):
         self.page = None
         self.ui.toolButton.clicked.connect(self.fname_pages_dialog)
         self.ui.pushButton.clicked.connect(self.convert)
-        self.ui.lineEdit_2.setText('\d\d-\d\d-\d\d')
-        self.ui.lineEdit_3.setText('\n(Tue|Wed|Fri|Thu|Mon|Sat|Sun)')
-        self.ui.lineEdit_4.setText('[^\n:]\d\d:\d\d')
-        self.ui.lineEdit_5.setText('Voice')
-        self.ui.lineEdit_6.setText('\d{7,}')
-        self.ui.lineEdit_7.setText(r'\bL\b')
-        self.ui.lineEdit_8.setText(r'\b(1|2|3)\b\n')
-        self.ui.lineEdit_9.setText(r'\bO-P\b')
-        self.ui.lineEdit_10.setText(r'\b00:\d\d:\d\d\b')
-        self.ui.lineEdit_11.setText(r'\bH:M:S\b')
-        self.ui.lineEdit_12.setText(r'\b\d+,\d+\b')
+        self.DB = shelve.open('DB.txt')
+        self.DB['Template1'] = ['\d\d-\d\d-\d\d','\n(Tue|Wed|Fri|Thu|Mon|Sat|Sun)','[^\n:]\d\d:\d\d','Voice','\d{7,}',r'\bL\b',r'\b(1|2|3)\b\n',r'\bO-P\b',r'\b00:\d\d:\d\d\b',r'\bH:M:S\b',r'\b\d+,\d+\b']
+        self.enum_temp()
+        self.ui.comboBox.currentIndexChanged.connect(self.enum_temp)
+        self.ui.pushButton_2.clicked.connect(self.save_temp)
 
+
+    def enum_temp(self):
+        template = str(self.ui.comboBox.currentText())
+        self.ui.lineEdit_2.setText(str(self.DB[template][0]))
+        self.ui.lineEdit_3.setText(str(self.DB[template][1]))
+        self.ui.lineEdit_4.setText(str(self.DB[template][2]))
+        self.ui.lineEdit_5.setText(str(self.DB[template][3]))
+        self.ui.lineEdit_6.setText(str(self.DB[template][4]))
+        self.ui.lineEdit_7.setText(str(self.DB[template][5]))
+        self.ui.lineEdit_8.setText(str(self.DB[template][6]))
+        self.ui.lineEdit_9.setText(str(self.DB[template][7]))
+        self.ui.lineEdit_10.setText(str(self.DB[template][8]))
+        self.ui.lineEdit_11.setText(str(self.DB[template][9]))
+        self.ui.lineEdit_12.setText(str(self.DB[template][10]))
+
+    def save_temp(self):
+        template = str(self.ui.comboBox.currentText())
+        if template != 'Template1':
+            self.DB[template] = [str(self.ui.lineEdit_2.text()), str(self.ui.lineEdit_3.text()), str(self.ui.lineEdit_4.text()), str(self.ui.lineEdit_5.text()), str(self.ui.lineEdit_6.text()), str(self.ui.lineEdit_7.text()), str(self.ui.lineEdit_8.text()), str(self.ui.lineEdit_9.text()), str(self.ui.lineEdit_10.text()), str(self.ui.lineEdit_11.text()), str(self.ui.lineEdit_12.text())]
 
     def fname_pages_dialog(self):
         self.fname = QFileDialog.getOpenFileName(self,'Open PDF','/')
@@ -306,6 +321,8 @@ class MainWindow(QMainWindow):
         #outfp.close
         wb.save(self.fname+'.xls')
         self.ui.progressBar.setValue(100)
+        if self.ui.checkBox.isChecked():
+            os.system(''+str(self.fname)+'.xls')
         return data
 
     def __del__(self):

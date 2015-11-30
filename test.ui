@@ -34,8 +34,64 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="comboBox"/>
+    <item row="1" column="2">
+     <widget class="QComboBox" name="comboBox">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Template1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template4</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template5</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template6</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template7</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template8</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template9</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Template10</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label_2">
@@ -49,7 +105,7 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
+    <item row="3" column="2">
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
@@ -64,7 +120,7 @@
     <item row="4" column="0">
      <widget class="QLineEdit" name="lineEdit_2"/>
     </item>
-    <item row="4" column="1">
+    <item row="4" column="2">
      <widget class="QLineEdit" name="lineEdit_3">
       <property name="text">
        <string/>
@@ -83,7 +139,7 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="5" column="2">
      <widget class="QLabel" name="label_5">
       <property name="font">
        <font>
@@ -98,7 +154,7 @@
     <item row="6" column="0">
      <widget class="QLineEdit" name="lineEdit_4"/>
     </item>
-    <item row="6" column="1">
+    <item row="6" column="2">
      <widget class="QLineEdit" name="lineEdit_5"/>
     </item>
     <item row="7" column="0">
@@ -113,7 +169,7 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="1">
+    <item row="7" column="2">
      <widget class="QLabel" name="label_7">
       <property name="font">
        <font>
@@ -128,7 +184,7 @@
     <item row="8" column="0">
      <widget class="QLineEdit" name="lineEdit_6"/>
     </item>
-    <item row="8" column="1">
+    <item row="8" column="2">
      <widget class="QLineEdit" name="lineEdit_7"/>
     </item>
     <item row="9" column="0">
@@ -143,7 +199,7 @@
       </property>
      </widget>
     </item>
-    <item row="9" column="1">
+    <item row="9" column="2">
      <widget class="QLabel" name="label_9">
       <property name="font">
        <font>
@@ -158,7 +214,7 @@
     <item row="10" column="0">
      <widget class="QLineEdit" name="lineEdit_8"/>
     </item>
-    <item row="10" column="1">
+    <item row="10" column="2">
      <widget class="QLineEdit" name="lineEdit_9"/>
     </item>
     <item row="11" column="0">
@@ -173,7 +229,7 @@
       </property>
      </widget>
     </item>
-    <item row="11" column="1">
+    <item row="11" column="2">
      <widget class="QLabel" name="label_11">
       <property name="font">
        <font>
@@ -188,7 +244,7 @@
     <item row="12" column="0">
      <widget class="QLineEdit" name="lineEdit_10"/>
     </item>
-    <item row="12" column="1">
+    <item row="12" column="2">
      <widget class="QLineEdit" name="lineEdit_11"/>
     </item>
     <item row="13" column="0">
@@ -203,7 +259,7 @@
       </property>
      </widget>
     </item>
-    <item row="13" column="1">
+    <item row="13" column="2">
      <widget class="QCheckBox" name="checkBox">
       <property name="font">
        <font>
@@ -218,24 +274,31 @@
     <item row="14" column="0">
      <widget class="QLineEdit" name="lineEdit_12"/>
     </item>
-    <item row="14" column="1">
+    <item row="14" column="2">
      <widget class="QPushButton" name="pushButton">
       <property name="text">
        <string>START</string>
       </property>
      </widget>
     </item>
-    <item row="15" column="0" colspan="2">
+    <item row="15" column="0" colspan="3">
      <widget class="QProgressBar" name="progressBar">
       <property name="value">
        <number>0</number>
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item row="2" column="0" colspan="3">
      <widget class="QLineEdit" name="lineEdit">
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Save Template</string>
       </property>
      </widget>
     </item>
