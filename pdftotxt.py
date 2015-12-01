@@ -327,7 +327,7 @@ class MainWindow(QMainWindow):
         wb.save(self.fname+'.xls')
         self.ui.progressBar.setValue(100)
         if self.ui.checkBox.isChecked():
-            os.system(''+str(self.fname)+'.xls')
+            os.startfile(str(self.fname)+'.xls',)
         return data
 
     def __del__(self):
