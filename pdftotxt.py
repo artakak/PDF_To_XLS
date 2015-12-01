@@ -33,6 +33,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton.clicked.connect(self.convert)
         self.DB = shelve.open('DB.txt')
         self.DB['Template1'] = ['\d\d-\d\d-\d\d','\n(Tue|Wed|Fri|Thu|Mon|Sat|Sun)','[^\n:]\d\d:\d\d','Voice','\d{7,}',r'\bL\b',r'\b(1|2|3)\b\n',r'\bO-P\b',r'\b00:\d\d:\d\d\b',r'\bH:M:S\b',r'\b\d+,\d+\b']
+        self.DB.close()
         self.enum_temp()
         self.ui.comboBox.currentIndexChanged.connect(self.enum_temp)
         self.ui.pushButton_2.clicked.connect(self.save_temp)
@@ -40,6 +41,7 @@ class MainWindow(QMainWindow):
 
     def enum_temp(self):
         template = str(self.ui.comboBox.currentText())
+        self.DB = shelve.open('DB.txt')
         self.ui.lineEdit_2.setText(str(self.DB[template][0]))
         self.ui.lineEdit_3.setText(str(self.DB[template][1]))
         self.ui.lineEdit_4.setText(str(self.DB[template][2]))
@@ -51,11 +53,14 @@ class MainWindow(QMainWindow):
         self.ui.lineEdit_10.setText(str(self.DB[template][8]))
         self.ui.lineEdit_11.setText(str(self.DB[template][9]))
         self.ui.lineEdit_12.setText(str(self.DB[template][10]))
+        self.DB.close()
 
     def save_temp(self):
+        self.DB = shelve.open('DB.txt')
         template = str(self.ui.comboBox.currentText())
         if template != 'Template1':
             self.DB[template] = [str(self.ui.lineEdit_2.text()), str(self.ui.lineEdit_3.text()), str(self.ui.lineEdit_4.text()), str(self.ui.lineEdit_5.text()), str(self.ui.lineEdit_6.text()), str(self.ui.lineEdit_7.text()), str(self.ui.lineEdit_8.text()), str(self.ui.lineEdit_9.text()), str(self.ui.lineEdit_10.text()), str(self.ui.lineEdit_11.text()), str(self.ui.lineEdit_12.text())]
+        self.DB.close()
 
     def fname_pages_dialog(self):
         self.fname = QFileDialog.getOpenFileName(self,'Open PDF','/')
